@@ -18,4 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/notification', [App\Http\Controllers\Api\Tongkat::class, 'getNotification']);
+Route::post('/notification', [App\Http\Controllers\Api\Tongkat::class, 'sendNotification']);
+Route::post('/locate', [App\Http\Controllers\Api\Tongkat::class, 'getLocation']);
 Route::get('/', [App\Http\Controllers\Api\Tongkat::class, 'index']);
