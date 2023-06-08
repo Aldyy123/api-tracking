@@ -21,4 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/notification', [App\Http\Controllers\Api\Tongkat::class, 'getNotification']);
 Route::post('/notification', [App\Http\Controllers\Api\Tongkat::class, 'sendNotification']);
 Route::post('/locate', [App\Http\Controllers\Api\Tongkat::class, 'getLocation']);
+Route::get('/send', [App\Http\Controllers\Api\Tongkat::class, 'insertController']);
+Route::put('/controller/{token}', [App\Http\Controllers\Api\Tongkat::class, 'updateControl']);
 Route::get('/', [App\Http\Controllers\Api\Tongkat::class, 'index']);

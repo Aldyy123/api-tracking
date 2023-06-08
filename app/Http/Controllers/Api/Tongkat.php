@@ -21,6 +21,48 @@ class Tongkat extends Controller
         ], 200);
     }
 
+    public function updateControl(Request $request, $token)
+    {
+        try {
+            $updated = DB::table('controller')->where('token', $token)->update([
+                'ult' => $request->ult,
+            ]);
+            return response()->json([
+                'success' => true,
+                'message' => 'Berhasil mengupdate lokasi',
+                'data'    => ControllerModel::where('token', $token)->first()
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+
+    public function insertController(Request $request)
+    {
+        try {
+            $alt = $request->query('alt');
+            $lng = $request->query('lng');
+            $updated = DB::table('controller')->where('token', 252525)->update([
+                'alt' => $alt,
+                'lng' => $lng
+            ]);
+            return response()->json([
+                'message' => 'Berhasil mengupdate lokasi',
+                'data'    => ControllerModel::where('token', 252525)->first()
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+
     public function getLocation(Request $request)
     {
         try {
